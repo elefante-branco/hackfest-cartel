@@ -18,11 +18,13 @@
                 <div class="box box-info">
                     <div class="box-header with-border">
                         <h3 class="box-title">Suas Investigações</h3>
+                        <!--
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="remove">
                                 <i class="fa fa-times"></i>
                             </button>
                         </div>
+                        -->
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -40,10 +42,18 @@
                                     <tbody>
                                     @foreach($contextos as $contexto)
                                         <tr>
-                                            <td>{{$contexto->nome}}</td>
+                                            <td>
+                                                <a href="{{route('contextos.show', $contexto->id)}}">
+                                                    {{$contexto->nome}}
+                                                </a>
+                                            </td>
                                             <td>{{$contexto->entidades->count()}}</td>
                                             <td>{{$contexto->created_at->format('d/m/Y')}}</td>
-                                            <td>-</td>
+                                            <td>
+                                                <a href="{{route('contextos.show', $contexto->id)}}" class="btn btn-success btn-xs">
+                                                    Ver
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -56,7 +66,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <a class="btn btn-sm btn-info btn-flat pull-left"
+                        <a class="btn btn-sm btn-info btn-flat pull-right"
                            data-toggle="modal"
                            data-target="#modal-contexto-create">
                             Registrar nova investigação

@@ -56,7 +56,9 @@ class ContextoController extends Controller
      */
     public function show($id)
     {
-        //
+        $contexto = Contexto::findOrFail($id);
+
+        return view(self::VIEW_PATH.'show', compact('contexto'));
     }
 
     /**

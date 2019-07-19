@@ -6,6 +6,7 @@
             <i class="fa fa-users"></i> <span>Investigações</span>
         </a>
     </li>
+    <!--
     <li class="treeview">
         <a href="#">
             <i class="fa fa-users"></i>
@@ -27,4 +28,5 @@
             </li>
         </ul>
     </li>
+    -->
 @endsection
