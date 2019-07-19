@@ -54,6 +54,11 @@
                         enabled: true,
                     }
                 },
+                legend: {
+                    title: {
+                        text: 'Denúncias / mil habitantes'
+                    }
+                }
             });
         })
     </script>
