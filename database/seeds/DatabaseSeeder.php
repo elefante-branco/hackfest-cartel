@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         $this->call(PapeisTableSeeder::class);
+        $this->call(UnidadeFederalSeeder::class);
+        $this->call(MunicipioSeeder::class);
+        $this->call(CidadeMediaPrecoSeeder::class);
 
         // Testes
         if (env('APP_ENV') != 'production') {
