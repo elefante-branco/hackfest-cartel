@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContextosTable extends Migration
+class CreateContextosEntidadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,20 @@ class CreateContextosTable extends Migration
      */
     public function up()
     {
-        Schema::create('contextos', function (Blueprint $table) {
+        Schema::create('contextos_entidades', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
 
-            $table->integer('usuario_id');
-            $table->foreign('usuario_id')
+            $table->integer('contexto_id');
+            $table->foreign('contexto_id')
                 ->references('id')
-                ->on('users')
+                ->on('contextos')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->integer('entidade_id');
+            $table->foreign('entidade_id')
+                ->references('id')
+                ->on('entidades')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
@@ -36,6 +42,6 @@ class CreateContextosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contextos');
+        Schema::dropIfExists('contextos_entidades');
     }
 }

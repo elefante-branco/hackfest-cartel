@@ -16,7 +16,7 @@ class CreateEntidadesTable extends Migration
         Schema::create('entidades', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
-            $table->string('cnpj')->nullable();
+            $table->string('cnpj', 14)->nullable();
             $table->decimal('longitude', 10, 7);
             $table->decimal('latitude', 10, 7);
 
