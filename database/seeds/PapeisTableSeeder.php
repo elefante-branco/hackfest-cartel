@@ -1,6 +1,6 @@
 <?php
 
-use \App\Models\Papeis\Papel;
+use App\Models\Papel;
 use Illuminate\Database\Seeder;
 
 class PapeisTableSeeder extends Seeder

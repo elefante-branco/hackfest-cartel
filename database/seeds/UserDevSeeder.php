@@ -12,7 +12,7 @@ class UserDevSeeder extends Seeder
     public function run()
     {
         \App\User::create([
-            'name' => 'Álvaro Ferreira Pires de Paiva',
+            'nome' => 'Álvaro Ferreira Pires de Paiva',
             'email' => 'alvarofepipa@gmail.com',
             'password' => bcrypt('alvaro'),
             'perfil_id' => \App\Models\Papel::ROLE_MP,
