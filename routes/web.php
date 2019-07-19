@@ -27,3 +27,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('contexto', 'ContextoController');
     });
 });
+
+Route::get('/', function (){
+    return view('dashboard');
+});
