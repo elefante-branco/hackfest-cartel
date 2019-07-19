@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+/*
+ * Autenticação
+ */
+
+Route::group(['namespace' => 'Investigacao'], function () {
+    Route::resource('contextos', 'ContextoController');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+
+    Route::group(['name' => 'Investigacao'], function () {
+        Route::resource('contexto', 'ContextoController');
+    });
 });

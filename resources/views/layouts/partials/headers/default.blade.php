@@ -2,7 +2,7 @@
     <!-- Logo -->
     <a href="{{url('/')}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>Geo</b></span>
+        <span class="logo-mini"><b>MPRN</b></span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>Geo</b>SUS</span>
     </a>

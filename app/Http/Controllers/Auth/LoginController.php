@@ -59,10 +59,9 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
-        $credentials = $request->only('cpf', 'password');
-        $credentials['cpf'] = MaskHelper::onlyDigitsField($credentials['cpf']);
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt(['cpf' => $credentials['cpf'], 'password' => $credentials['password'], 'ativo' => true])) {
+        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
             # Salvando informações na session
             $generalSlug = Auth::user()->papel->general_slug;
             session([

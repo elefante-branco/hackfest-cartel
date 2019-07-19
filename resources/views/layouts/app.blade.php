@@ -38,13 +38,13 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
-    @include('partials.headers.default')
-    @include('partials.menus.'.Session::get('general_slug'))
+    @include('layouts.partials.headers.default')
+    @include('layouts.partials.menus.mp')
     <div class="content-wrapper">
         <section class="content-header">
             @yield('content-header')
         </section>
-        @include('partials.system-alerts')
+        @include('layouts.partials.system-alerts')
         @yield('content')
     </div>
 </div>
