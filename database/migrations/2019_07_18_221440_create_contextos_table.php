@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostosFavoritosTable extends Migration
+class CreateContextosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,12 @@ class CreatePostosFavoritosTable extends Migration
      */
     public function up()
     {
-        Schema::create('postos_favoritos', function (Blueprint $table) {
+        Schema::create('contextos', function (Blueprint $table) {
             $table->bigIncrements('id');
-
             $table->integer('usuario_id');
             $table->foreign('usuario_id')
                 ->references('id')
                 ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
-            $table->integer('posto_id');
-            $table->foreign('posto_id')
-                ->references('id')
-                ->on('postos')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
@@ -42,6 +34,6 @@ class CreatePostosFavoritosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('postos_favoritos');
+        Schema::dropIfExists('contextos');
     }
 }

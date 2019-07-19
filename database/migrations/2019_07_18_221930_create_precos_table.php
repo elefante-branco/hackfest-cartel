@@ -17,10 +17,10 @@ class CreatePrecosTable extends Migration
             $table->bigIncrements('id');
             $table->float('valor', 5, 3);
 
-            $table->integer('posto_id');
-            $table->foreign('posto_id')
+            $table->integer('entidade_id');
+            $table->foreign('entidade_id')
                 ->references('id')
-                ->on('postos')
+                ->on('entidades')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 

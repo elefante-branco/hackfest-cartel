@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostosDenunciasTable extends Migration
+class CreateEntidadesDenunciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePostosDenunciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('postos_denuncias', function (Blueprint $table) {
+        Schema::create('entidades_denuncias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->tinyInteger('status');
 
@@ -31,10 +31,10 @@ class CreatePostosDenunciasTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->integer('posto_id');
-            $table->foreign('posto_id')
+            $table->integer('entidade_id');
+            $table->foreign('entidade_id')
                 ->references('id')
-                ->on('postos')
+                ->on('entidades')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
@@ -50,6 +50,6 @@ class CreatePostosDenunciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('postos_denuncias');
+        Schema::dropIfExists('entidades_denuncias');
     }
 }

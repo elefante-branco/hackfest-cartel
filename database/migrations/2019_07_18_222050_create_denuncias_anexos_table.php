@@ -21,7 +21,7 @@ class CreateDenunciasAnexosTable extends Migration
             $table->integer('denuncia_id');
             $table->foreign('denuncia_id')
                 ->references('id')
-                ->on('postos_denuncias')
+                ->on('entidades_denuncias')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
