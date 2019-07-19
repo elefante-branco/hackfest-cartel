@@ -15,7 +15,7 @@ class Papel extends Model implements Auditable
      * @var string
      * The table associated with the model.
      */
-    protected $table = 'papeis';
+    protected $table = 'perfis';
 
     /**
      * @var array

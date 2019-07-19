@@ -4,11 +4,11 @@ namespace App\Models\Investigacao;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Entidade extends Model
+class Entidade extends Model implements Auditable
 {
-    use SoftDeletes, Auditable;
+    use SoftDeletes, \OwenIt\Auditing\Auditable;
 
     protected $table = 'entidades';
 

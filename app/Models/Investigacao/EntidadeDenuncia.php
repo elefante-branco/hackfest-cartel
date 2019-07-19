@@ -5,11 +5,11 @@ namespace App\Models\Investigacao;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class EntidadeDenuncia extends Model
+class EntidadeDenuncia extends Model implements Auditable
 {
-    use SoftDeletes, Auditable;
+    use SoftDeletes, \OwenIt\Auditing\Auditable;
 
     protected $table = 'entidades_denuncias';
 
