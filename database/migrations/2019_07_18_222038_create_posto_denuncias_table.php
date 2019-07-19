@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContextosEntidadesTable extends Migration
+class CreatePostoDenunciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,28 @@ class CreateContextosEntidadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('contextos_entidades', function (Blueprint $table) {
+        Schema::create('posto_denuncias', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->tinyInteger('status');
 
-            $table->integer('contexto_id');
-            $table->foreign('contexto_id')
+            $table->integer('usuario_id');
+            $table->foreign('usuario_id')
                 ->references('id')
-                ->on('contextos')
+                ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->integer('entidade_id');
-            $table->foreign('entidade_id')
+            $table->integer('usuario_validador_id');
+            $table->foreign('usuario_validador_id')
                 ->references('id')
-                ->on('entidades')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->integer('posto_id');
+            $table->foreign('posto_id')
+                ->references('id')
+                ->on('postos')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
@@ -42,6 +50,6 @@ class CreateContextosEntidadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contextos_entidades');
+        Schema::dropIfExists('posto_denuncias');
     }
 }
