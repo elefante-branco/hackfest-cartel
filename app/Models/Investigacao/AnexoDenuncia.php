@@ -10,7 +10,7 @@ class AnexoDenuncia extends Model implements Auditable
 {
     use SoftDeletes, \OwenIt\Auditing\Auditable;
 
-    protected $table = 'denuncias_anexos';
+    protected $table = 'denuncia_anexos';
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +27,6 @@ class AnexoDenuncia extends Model implements Auditable
      */
     public function denuncia()
     {
-        return $this->belongsTo(EntidadeDenuncia::class, 'denuncia_id', 'id');
+        return $this->belongsTo(PostoDenuncia::class, 'denuncia_id', 'id');
     }
 }

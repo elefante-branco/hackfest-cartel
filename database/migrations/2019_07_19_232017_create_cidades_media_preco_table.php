@@ -15,10 +15,10 @@ class CreateCidadesMediaPrecoTable extends Migration
     {
         Schema::create('cidades_media_preco', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->double('media');
-            $table->double('desvio_padrao');
-            $table->double('menor_valor');
-            $table->double('maior_valor');
+            $table->double('media', 5, 3);
+            $table->double('desvio_padrao', 5, 3);
+            $table->double('menor_valor', 5, 3);
+            $table->double('maior_valor', 5, 3);
 
             $table->integer('municipio_id');
             $table->foreign('municipio_id')

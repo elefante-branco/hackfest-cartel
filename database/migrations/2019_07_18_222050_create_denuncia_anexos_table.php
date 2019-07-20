@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDenunciasAnexosTable extends Migration
+class CreateDenunciaAnexosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDenunciasAnexosTable extends Migration
      */
     public function up()
     {
-        Schema::create('denuncias_anexos', function (Blueprint $table) {
+        Schema::create('denuncia_anexos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->tinyInteger('tipo_anexo');
             $table->string('caminho_arquivo');
@@ -21,7 +21,7 @@ class CreateDenunciasAnexosTable extends Migration
             $table->integer('denuncia_id');
             $table->foreign('denuncia_id')
                 ->references('id')
-                ->on('entidades_denuncias')
+                ->on('posto_denuncias')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
@@ -37,6 +37,6 @@ class CreateDenunciasAnexosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('denuncias_anexos');
+        Schema::dropIfExists('denuncia_anexos');
     }
 }

@@ -19,14 +19,14 @@ class Preco extends Model implements Auditable
      */
     protected $fillable = [
         'valor',
-        'entidade_id',
+        'posto_id',
     ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function precos()
+    public function posto()
     {
-        return $this->belongsTo(Entidade::class, 'entidade_id', 'id');
+        return $this->belongsTo(Posto::class, 'entidade_id', 'id');
     }
 }

@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class Contexto extends Model implements Auditable
+class PostoDenuncia extends Model implements Auditable
 {
     use SoftDeletes, \OwenIt\Auditing\Auditable;
 
-    protected $table = 'contextos';
+    protected $table = 'posto_denuncias';
 
     /**
      * The attributes that are mass assignable.
@@ -19,8 +19,9 @@ class Contexto extends Model implements Auditable
      * @var array
      */
     protected $fillable = [
-        'nome',
-        'usuario_id',
+        'status',
+        'usuario_id', 'usuario_validador_id',
+        'posto_id',
     ];
 
     /**
@@ -32,20 +33,18 @@ class Contexto extends Model implements Auditable
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function contexto_entidades()
+    public function usuario_validador()
     {
-        return $this->hasMany(ContextoEntidade::class, 'contexto_id', 'id');
+        return $this->belongsTo(User::class, 'usuario_validador_id', 'id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function entidades()
+    public function posto()
     {
-        return $this->hasManyThrough(Entidade::class, ContextoEntidade::class,
-            'contexto_id','id',
-            'id','entidade_id');
+        return $this->belongsTo(Posto::class, 'posto_id', 'id');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEntidadesTable extends Migration
+class CreatePostosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateEntidadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('entidades', function (Blueprint $table) {
+        Schema::create('postos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('cnpj', 14)->nullable();
-            $table->decimal('longitude', 10, 7);
-            $table->decimal('latitude', 10, 7);
+            $table->decimal('longitude', 10, 7)->nullable();
+            $table->decimal('latitude', 10, 7)->nullable();
 
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +32,6 @@ class CreateEntidadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entidades');
+        Schema::dropIfExists('postos');
     }
 }

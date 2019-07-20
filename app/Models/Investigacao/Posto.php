@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class Entidade extends Model implements Auditable
+class Posto extends Model implements Auditable
 {
     use SoftDeletes, \OwenIt\Auditing\Auditable;
 
-    protected $table = 'entidades';
+    protected $table = 'postos';
 
     /**
      * The attributes that are mass assignable.
@@ -25,14 +25,6 @@ class Entidade extends Model implements Auditable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function contextos_entidade()
-    {
-        return $this->hasMany(ContextoEntidade::class, 'entidade_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function precos()
     {
         return $this->hasMany(Preco::class, 'entidade_id', 'id');
@@ -43,16 +35,6 @@ class Entidade extends Model implements Auditable
      */
     public function denuncias()
     {
-        return $this->hasMany(EntidadeDenuncia::class, 'entidade_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    public function contextos()
-    {
-        return $this->hasManyThrough(Contexto::class, ContextoEntidade::class,
-            'entidade_id', 'id',
-            'id', 'contexto_id');
+        return $this->hasMany(PostoDenuncia::class, 'entidade_id', 'id');
     }
 }
