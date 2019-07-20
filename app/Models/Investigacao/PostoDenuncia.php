@@ -43,6 +43,10 @@ class PostoDenuncia extends Model implements Auditable
         self::STATUS_FINALIZADO => 'green',
     ];
 
+    /**
+     * Retorna o badge referente ao status da denuncia
+     * @return string
+     */
     public function getStatusBadgeAttribute()
     {
         return '<span class="badge bg-'.self::COLOR_STATUS[$this->status].'">'.self::LABEL_STATUS[$this->status].'</span>';
