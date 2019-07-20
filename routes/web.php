@@ -31,3 +31,5 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/', function (){
     return view('dashboard');
 });
+
+Route::get('municipios_precos/{municipio}', 'VisualizacaoController@precoMedio')->name('municipios_precos.show');
