@@ -15,7 +15,7 @@ class CreatePrecosTable extends Migration
     {
         Schema::create('precos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('valor', 5, 3);
+            $table->float('valor', 6, 4);
 
             $table->integer('posto_id');
             $table->foreign('posto_id')

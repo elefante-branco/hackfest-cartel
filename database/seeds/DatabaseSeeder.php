@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UnidadeFederalSeeder::class);
         $this->call(MunicipioSeeder::class);
         $this->call(CidadeMediaPrecoSeeder::class);
+        $this->call(PostoSeeder::class);
 
         // Testes
         if (env('APP_ENV') != 'production') {
