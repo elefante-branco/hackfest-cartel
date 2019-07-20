@@ -26,3 +26,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('contexto', 'ContextoController');
     });
 });
+
+Route::get('/', function (){
+    return view('dashboard');
+});
+
+Route::get('municipios_precos/{municipio}', 'VisualizacaoController@precoMedio')->name('municipios_precos.show');

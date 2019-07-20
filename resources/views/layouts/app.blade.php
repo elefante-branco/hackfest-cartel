@@ -45,7 +45,10 @@
             @yield('content-header')
         </section>
         @include('layouts.partials.system-alerts')
-        @yield('content')
+        <section class="content">
+            @yield('content')
+        </section>
+
     </div>
 </div>
 <!-- ./wrapper -->
