@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="{{url('/')}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>EB</b></span>
+        <span class="logo-mini"><b>PA</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>E</b>legante <b>B</b>ranco</span>
+        <span class="logo-lg"><b>P</b>lataforma <b>A</b>gulha</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
