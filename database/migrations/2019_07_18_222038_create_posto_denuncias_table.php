@@ -16,6 +16,7 @@ class CreatePostoDenunciasTable extends Migration
         Schema::create('posto_denuncias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->tinyInteger('status');
+            $table->boolean('anonimo')->default(false);
 
             $table->integer('usuario_id');
             $table->foreign('usuario_id')

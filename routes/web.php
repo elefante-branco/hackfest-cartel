@@ -18,11 +18,10 @@ Auth::routes();
  */
 
 Route::group(['namespace' => 'Investigacao'], function () {
-    Route::resource('contextos', 'ContextoController');
+    Route::resource('denuncias', 'DenunciaController');
 });
 
 Route::group(['middleware' => ['auth']], function () {
-
     Route::group(['name' => 'Investigacao'], function () {
         Route::resource('contexto', 'ContextoController');
     });

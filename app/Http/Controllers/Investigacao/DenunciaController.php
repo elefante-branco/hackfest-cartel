@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Investigacao;
 
-use App\Models\Investigacao\Contexto;
+use App\Models\Investigacao\PostoDenuncia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
-class ContextoController extends Controller
+class DenunciaController extends Controller
 {
-    const VIEW_PATH = 'contextos.';
+    const VIEW_PATH = 'denuncias.';
 
     /**
      * Display a listing of the resource.
@@ -19,11 +17,20 @@ class ContextoController extends Controller
      */
     public function index()
     {
-        $contextos = Contexto::where('usuario_id', 1)
-            ->with('entidades')
+        $denuncias = PostoDenuncia::with('posto','anexos', 'usuario', 'usuario_validador')
             ->get();
 
-        return view(self::VIEW_PATH.'index', compact('contextos'));
+        return view(self::VIEW_PATH.'index', compact('denuncias'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -34,18 +41,7 @@ class ContextoController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        DB::transaction(function () use ($data) {
-            Contexto::create([
-                'nome' => $data['nome'],
-                'usuario_id' => 1,
-            ]);
-        });
-
-        return redirect()
-            ->route('contextos.index')
-            ->with('success', 'Investigação registrada com sucesso');
+        //
     }
 
     /**
@@ -56,9 +52,7 @@ class ContextoController extends Controller
      */
     public function show($id)
     {
-        $contexto = Contexto::findOrFail($id);
-
-        return view(self::VIEW_PATH.'show', compact('contexto'));
+        //
     }
 
     /**

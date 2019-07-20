@@ -2,8 +2,8 @@
 
 @section('menu-itens')
     <li>
-        <a href="{{ route('contextos.index') }}">
-            <i class="fa fa-users"></i> <span>Investigações</span>
+        <a href="{{ route('denuncias.index') }}">
+            <i class="fa fa-users"></i> <span>Denúncias</span>
         </a>
     </li>
     <!--
@@ -17,12 +17,12 @@
         </a>
         <ul class="treeview-menu">
             <li>
-                <a href="{{ route('contextos.index') }}">
+                <a href="{{ route('denuncias.index') }}">
                     <i class="fa fa-circle-o"></i> Ver investigações
                 </a>
             </li>
             <li>
-                <a href="{{ route('contextos.create') }}">
+                <a href="{{ route('denuncias.create') }}">
                     <i class="fa fa-circle-o"></i> Registrar nova investigação
                 </a>
             </li>
