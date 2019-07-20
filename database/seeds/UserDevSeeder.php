@@ -17,5 +17,7 @@ class UserDevSeeder extends Seeder
             'password' => bcrypt('alvaro'),
             'perfil_id' => \App\Models\Papel::ROLE_MP,
         ]);
+
+        factory('App\User', 10)->create();
     }
 }

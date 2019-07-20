@@ -45,18 +45,21 @@
                                     @foreach($denuncias as $denuncia)
                                         <tr>
                                             <td>{{$denuncia->posto->nome}}</td>
-                                            <td>{{$denuncia->status_badge}}</td>
+                                            <td>{!! $denuncia->status_badge !!}</td>
                                             <td>{{$denuncia->created_at->format('d/m/Y')}}</td>
                                             <td>{{$denuncia->usuario_validador->nome?:'-'}}</td>
                                             <td>
-                                                {{$denuncia->anonimo?'Anônimo':$denuncia->usuario->nome}}
+                                                {!! $denuncia->anonimo?'Anônimo':'<a>'.$denuncia->usuario->nome.'</a>' !!}
                                             </td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
                             </div>
+                        <div>
+                            {{$denuncias->links()}}
+                        </div>
                             <!-- /.table-responsive -->
                         @else
                             <p>Não há denúncias registradas.</p>

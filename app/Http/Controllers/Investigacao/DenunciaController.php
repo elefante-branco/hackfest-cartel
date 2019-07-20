@@ -18,7 +18,7 @@ class DenunciaController extends Controller
     public function index()
     {
         $denuncias = PostoDenuncia::with('posto','anexos', 'usuario', 'usuario_validador')
-            ->get();
+            ->paginate(10);
 
         return view(self::VIEW_PATH.'index', compact('denuncias'));
     }
