@@ -25,7 +25,7 @@ class CreatePostoDenunciasTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->integer('usuario_validador_id');
+            $table->integer('usuario_validador_id')->nullable();
             $table->foreign('usuario_validador_id')
                 ->references('id')
                 ->on('users')

@@ -35,7 +35,7 @@
                                     <tr>
                                         <th class="col-md-3">Nome do posto</th>
                                         <th class="col-md-1">Status</th>
-                                        <th class="col-md-2">Dia da denúncia</th>
+                                        <th class="col-md-2">Momento da denúncia</th>
                                         <th class="col-md-2">Validador</th>
                                         <th class="col-md-2">Denunciante</th>
                                         <th class="col-md-2">Opções</th>
@@ -46,8 +46,8 @@
                                         <tr>
                                             <td>{{$denuncia->posto->nome}}</td>
                                             <td>{!! $denuncia->status_badge !!}</td>
-                                            <td>{{$denuncia->created_at->format('d/m/Y')}}</td>
-                                            <td>{{$denuncia->usuario_validador->nome?:'-'}}</td>
+                                            <td>{{$denuncia->created_at->format('d/m/Y - H:i:s')}}</td>
+                                            <td>{{$denuncia->usuario_validador?$denuncia->usuario_validador->nome:'-'}}</td>
                                             <td>
                                                 {!! $denuncia->anonimo?'Anônimo':'<a>'.$denuncia->usuario->nome.'</a>' !!}
                                             </td>

@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
         if (env('APP_ENV') != 'production') {
             $this->call(UserDevSeeder::class);
         }
+
+        $this->call(DenunciasSeeder::class);
     }
 }

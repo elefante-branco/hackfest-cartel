@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use \App\Models\Investigacao\PostoDenuncia;
 
 class DenunciasSeeder extends Seeder
 {
@@ -12,5 +13,9 @@ class DenunciasSeeder extends Seeder
     public function run()
     {
         factory('App\Models\Investigacao\PostoDenuncia', 50)->create();
+
+        PostoDenuncia::where('status', PostoDenuncia::STATUS_AGUARDANDO)->update([
+            'usuario_validador_id' => null,
+        ]);
     }
 }

@@ -16,6 +16,7 @@ class PostoSeeder extends Seeder
 
         while (($seed = fgetcsv($seeder, 100000000, ',')) !== false) {
             $posto = \App\Models\Investigacao\Posto::create([
+                'id' => $i,
                 'nome' => 'Posto '.($i++),
             ]);
 
