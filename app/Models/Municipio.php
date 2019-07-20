@@ -39,7 +39,7 @@ use OwenIt\Auditing\Contracts\Auditable;
  */
 class Municipio extends Model implements Auditable
 {
-    use \OwenIt\Auditing\Auditable, SoftDeletes;
+    use \OwenIt\Auditing\Auditable;
 
     protected $table = 'municipios';
 
@@ -52,13 +52,6 @@ class Municipio extends Model implements Auditable
         'unidade_federal_id', 'nome',
     ];
 
-    /**
-     * The attributes that should be mutated to dates.
-     * @var array
-     */
-    protected $dates = [
-        'created_at', 'updated_at', 'deleted_at'
-    ];
 
     /**
      * @return mixed

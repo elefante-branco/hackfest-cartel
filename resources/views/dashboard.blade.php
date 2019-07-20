@@ -2,31 +2,48 @@
 
 @section("content")
     <div class="row">
-        <div class="col-lg-8">
-            <div class="box box-danger">
-                <div class="box-header box-with-border">
-                    <div class="box-body">
-                        <div id="container" style="width:100%; height:400px;"></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-lg-4">
-            <div class="box box-danger">
-                <div class="box-header box-with-border">
-                    <div class="box-body">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-8">
+        <div class="col-lg-6">
             <div class="box box-solid bg-light">
                 <div class="box-header ui-sortable-handle" style="cursor: move;">
                     <i class="fa fa-th"></i>
 
-                    <h3 class="box-title">Sales Graph</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn bg-light btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn bg-light btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body border-radius-none">
+                        <div id="container" style="width:100%; height:400px;"></div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+            <div class="box box-solid bg-light">
+                <div class="box-header ui-sortable-handle" style="cursor: move;">
+                    <i class="fa fa-th"></i>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn bg-light btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn bg-light btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body border-radius-none">
+                    <div class="chart" id="municipio" style=" -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="box box-solid bg-light">
+                <div class="box-header ui-sortable-handle" style="cursor: move;">
+                    <i class="fa fa-th"></i>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn bg-light btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -51,6 +68,48 @@
     <script src="{{asset('plugins/highcharts/modules/map.js')}}"></script>
 
     <script>
+
+        function municipioChart(id) {
+            var url = '{{ route("municipio_precos.show", ":slug") }}';
+
+            url = url.replace(':slug', id);
+            $.ajax({
+                url: url,
+                dataType: "json",
+                success:function (data, status) {
+
+                    var chart_municipio = new Highcharts.chart('municipio', {
+                        chart:{
+                            title: { text: data.results.name}
+                        },
+                        title: {
+                            text: 'Média de preços entre 2004 e 2012'
+                        },
+                        yAxis: {
+                            title: {text: 'Preço (R$) '}
+                        },
+                        series:[
+                            {
+                                data: data.results.values.map(Number),
+                                name: data.results.name,
+                                color: '#000'
+                            },
+                            {
+                                data: data.results.selected.map(Number),
+                                name: 'Postos selecionados',
+                                color: '#82250C'
+                            }
+                        ]
+
+                    });
+                }
+            })
+
+        }
+
+        municipioChart("240810");
+
+
         var data = $.ajax({
             url: "/js/geojson/data.json",
             dataType: "json",
@@ -72,6 +131,7 @@
                         events: {
                             click: function (e) {
                                 console.log(e.point.id)
+                                municipioChart(e.point.id);
                             }
                         }
                     }
@@ -100,10 +160,10 @@
         })
 
         $.ajax({
-            url:'{{route("municipios_precos.show", "240810")}}',
+            url:'{{route("municipios_precos.show")}}',
             dataType: "json",
             success:function (data, status) {
-                console.log(data);
+
                 var chart = Highcharts.chart('line-chart',{
                     chart: {
                         backgroundColor: null

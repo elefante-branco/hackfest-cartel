@@ -31,4 +31,5 @@ Route::get('/', function (){
     return view('dashboard');
 });
 
-Route::get('municipios_precos/{municipio}', 'VisualizacaoController@precoMedio')->name('municipios_precos.show');
+Route::get('municipios_precos/', 'VisualizacaoController@precoMedio')->name('municipios_precos.show');
+Route::get('municipios_precos/{municipio}', 'VisualizacaoController@precoMedioMunicipio')->name('municipio_precos.show');
