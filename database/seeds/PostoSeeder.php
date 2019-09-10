@@ -18,7 +18,7 @@ class PostoSeeder extends Seeder
             $posto = \App\Models\Investigacao\Posto::create([
                 'id' => $i,
                 'nome' => 'Posto '.($i++),
-            ]);
+            ]);po
 
             $precoSeed = [];
             foreach ($seed as $valor) {
